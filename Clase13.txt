@@ -36,3 +36,30 @@ WHERE rating = 'R';
 UPDATE film
 SET release_year = '2005'
 WHERE rating = 'NC-17';
+
+4)
+UPDATE rental, inventory, film
+SET return_date = CURRENT_DATE
+WHERE rental.inventory_id =inventory.inventory_id  AND inventory.film_id = film.film_id  AND film.film_id = 80
+
+SELECT film_id FROM film
+INNER JOIN inventory using (film_id)
+INNER JOIN rental USING (inventory_id)
+ORDER BY rental.rental_date 
+limit 1; 
+
+5)
+DELETE FROM film_actor
+WHERE film_id = 1;
+
+DELETE FROM film_category
+WHERE film_id = 1;
+
+DELETE FROM rental
+WHERE inventory_id in (select inventory_id from inventory where film_id = 1);
+
+DELETE FROM inventory
+WHERE film_id = 1;
+
+DELETE FROM film
+WHERE film_id = 1;
