@@ -84,8 +84,8 @@ VALUES
 103,
 (SELECT customer_id
 FROM customer
-WHERE customer.first_name LIKE 'Fausto'
-AND customer.last_name LIKE 'Pigliacampo'),
+WHERE customer.first_name LIKE 'Emilio'
+AND customer.last_name LIKE 'Alvarez'),
 (SELECT staff_id
 FROM staff
 WHERE staff.store_id = (SELECT store_id
@@ -99,8 +99,8 @@ INSERT INTO payment
 VALUES
 ((SELECT customer_id
 FROM customer
-WHERE customer.first_name LIKE 'Fausto'
-AND customer.last_name LIKE 'Pigliacampo'),
+WHERE customer.first_name LIKE 'Emilio'
+AND customer.last_name LIKE 'Alvarez'),
 (SELECT staff_id
 FROM staff
 WHERE staff.store_id = (SELECT store_id
@@ -112,8 +112,8 @@ FROM rental
 WHERE rental.inventory_id = 103
 AND rental.customer_id = (SELECT customer_id
 				FROM customer
-				WHERE customer.first_name LIKE 'Fausto'
-				AND customer.last_name LIKE 'Pigliacampo')),
+				WHERE customer.first_name LIKE 'Emilio'
+				AND customer.last_name LIKE 'Alvarez')),
 (SELECT film.rental_rate
 FROM film
 INNER JOIN inventory USING (film_id)
